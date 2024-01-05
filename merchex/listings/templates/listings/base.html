@@ -1,0 +1,11 @@
+{% load static %}
+
+<html>
+<head><title>Merchex | {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'listings/styles.css' %}"/>
+</head>
+<body>
+{% block content %}{% endblock %}
+{% lorem 3 p random %}
+</body>
+</html>
