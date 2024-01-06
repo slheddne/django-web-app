@@ -22,10 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bands/', views.band_list, name='band-list'),
     path('bands/<int:id>/', views.band_detail, name='band-detail'),
-    path('about-us/', views.about),
+    path('about_us/', views.about, name='about-us'),
     path('listings/', views.listings, name='listing-list'),
     path('listings/<int:id>/', views.listing_detail, name='listing-detail'),
-    path('contact-us/', views.contact)
+    path('contact_us/', views.contact, name='contact-us'),
+    path('email_sent/', views.email_sent, name='email-sent'),
 ]
 
 handler404 = 'listings.views.custom_404'
