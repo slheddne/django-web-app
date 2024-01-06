@@ -21,7 +21,14 @@ def about(request):
 
 def listings(request):
     listings = Listing.objects.all()
-    return render(request, 'listings/listings.html', {'listings': listings})
+    return render(request, 'listings/listing_list.html', {'listings': listings})
+
+
+def listing_detail(request, id):
+    listing = get_object_or_404(Listing, id=id)
+    return render(request,
+                  'listings/listing_detail.html',
+                  {'listing': listing})
 
 
 def contact(request):

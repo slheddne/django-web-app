@@ -15,4 +15,17 @@
 
 <p>{{ band.biography }}</p>
 
+<h2>Annonces du groupe</h2>
+{% if not band.listing_set.exists %}
+<p>Aucune annonce pour ce groupe.</p>
+{% else %}
+<ul>
+    {% for listing in band.listing_set.all %}
+    <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<a href="{% url 'band-list' %}">Retour à tous les groupes</a>
+
 {% endblock %}
