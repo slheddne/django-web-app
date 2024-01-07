@@ -45,6 +45,17 @@ def band_update(request, id):
     return render(request, 'listings/band_update.html', {'form': form})
 
 
+# Suppression d'un groupe de musique
+def band_delete(request, id):
+    band = get_object_or_404(Band, id=id)
+
+    if request.method == 'POST':
+        band.delete()
+        return redirect('band-list')
+
+    return render(request, 'listings/band_delete.html', {'band': band})
+
+
 # Page "À propos de nous"
 def about(request):
     return render(request, 'listings/about_us.html')
@@ -88,6 +99,17 @@ def listing_update(request, id):
         form = ListingForm(instance=listing)
 
     return render(request, 'listings/listing_update.html', {'form': form})
+
+
+# Suppression d'une annonce
+def listing_delete(request, id):
+    listing = get_object_or_404(Listing, id=id)
+
+    if request.method == 'POST':
+        listing.delete()
+        return redirect('listing-list')
+
+    return render(request, 'listings/listing_delete.html', {'listing': listing})
 
 
 # Page de contact
